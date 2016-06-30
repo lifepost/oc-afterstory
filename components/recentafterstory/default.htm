@@ -1,0 +1,10 @@
+<div class="recent-afterstory">
+    <!--<ul class="list-group">-->
+        <!--{% for post in recentAfterStory.getPosts() %}-->
+            <!--<li class="list-group-item">{{ post.title }}</li>-->
+        <!--{% endfor %}-->
+    <!--</ul>-->
+    {% for post in recentAfterStory.getPosts() %}
+        <div class="recent-post">- {{ post.title | length > 28 ? post.title | slice(0,28) ~ '...' : post.title }}</div>
+    {% endfor %}
+</div>

@@ -1,0 +1,11 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    post:
+        label: teb.afterstory::lang.category.name
+        type: relation
+
+    path:
+        label: teb.afterstory::lang.category.order_no

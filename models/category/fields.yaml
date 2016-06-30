@@ -1,0 +1,10 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    name:
+        label: teb.afterstory::lang.category.name
+
+    order_no:
+        label: teb.afterstory::lang.category.order_no

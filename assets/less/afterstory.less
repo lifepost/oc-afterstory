@@ -1,0 +1,131 @@
+@brand-primary: #007000;
+@screen-md-min: 970px;
+
+.afterstory-wrapper {
+  .title {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  .title-bar {
+    border-top: 5px solid @brand-primary;
+    //border-bottom: 2px solid #007000;
+    background-color: #fffbf5;
+  }
+  .best-post {
+    padding: 30px;
+    background-color: #fffbf5;
+    border-bottom: 2px solid @brand-primary;
+    margin-bottom: 40px;
+  }
+    .best-crown {
+      margin-bottom:10px;
+    }
+
+    .best-list {
+      margin-top: 40px;
+      margin-bottom: 30px;
+      .list-group-item {
+        background-color: #fffbf5;
+        span {
+          color: #f65d57;
+          font-weight: bold;
+        }
+      }
+    }
+    .best-title {
+      font-size: 17px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      min-height: 30px;
+    }
+    .best-content {
+      font-size: 16px;
+      line-height: 30px;
+      margin-bottom: 30px;
+      min-height: 70px;
+    }
+    .best-more {
+      font-size: 16px;
+      font-weight: bold;
+      color: @brand-primary;
+      margin-bottom: 40px;
+      a { color: @brand-primary; }
+    }
+    .best-auhtor {
+      font-size: 15px;
+    }
+    .photos {
+      margin: 20px 0;
+    }
+  #show-best-content {
+    display: none;
+    border-top: 2px solid @brand-primary;
+    border-bottom: 2px solid @brand-primary;
+    padding: 20px 0;
+  }
+  .list {
+    margin-top: 100px;
+    .search {
+      margin-bottom: 15px;
+    }
+    .list-header {
+      background-color: @brand-primary;
+      padding: 13px;
+      vertical-align: middle;
+      height: 60px;
+    }
+    .list-row {
+      table {
+        td:first-child {
+          width: 7%;
+          background-color: #f1f1f1;
+          text-align: center;
+          vertical-align: middle;
+        }
+        td:last-child {
+          width: 93%;
+          padding: 20px 40px;
+          div {
+            padding: 5px;
+          }
+          .info {
+            font-size: 15px;
+            span {
+              color: #f65d57;
+              font-weight: bold;
+            }
+          }
+          .title {
+            font-size: 17px;
+            font-weight: bold;
+          }
+          .content {
+            font-size: 16px;
+          }
+          .more {
+            font-size: 15px;
+            color: @brand-primary;
+          }
+        }
+      }
+    }
+  }
+}
+
+.recent-afterstory {
+  .recent-post {
+    font-size: 14px;
+    line-height: 25px;
+  }
+}
+
+@media (min-width: @screen-md-min) {
+  .best {
+    //height: 805px;
+  }
+  .best-image {
+    height: 245px;
+    margin: auto 0;
+  }
+}

@@ -1,0 +1,172 @@
+<div class="afterstory-wrapper">
+    <div class="title" style="">치료후기</div>
+
+        <div class="title-bar"></div>
+        {% for bestPost in afterStory.getBestPosts %}
+            <div class="col-md-4 best-post">
+                <div class="best-crown text-center">
+                    <img src="/plugins/teb/afterstory/assets/images/crown.png">
+                </div>
+                {% set bestImage = afterStory.getPhoto(bestPost.id) %}
+                {% if bestImage %}
+                <div class="best-image">
+                    <img src="{{ (bestImage.path ~ bestImage.filename) | media }}" class="img-responsive">
+                </div>
+                {% endif %}
+                <div class="best-list">
+                    <ul class="list-group">
+                        <li class="list-group-item"><span>보유질환</span>&nbsp;&nbsp; {{ bestPost.category.name }}</li>
+                        <li class="list-group-item"><span>복용기간</span>&nbsp;&nbsp; {{ bestPost.take_period }}</li>
+                        <li class="list-group-item"><span>일일복용량</span>&nbsp;&nbsp; {{ bestPost.daily_dose }}</li>
+                    </ul>
+                </div>
+                <div class="best-title">
+                    {{ bestPost.title | length > 16 ? bestPost.title | slice(0,16) ~ '...' : bestPost.title }}
+                </div>
+                <div class="best-content">
+                    {{ bestPost.content|length > 50 ? bestPost.content | slice(0, 50) ~ '...' : bestPost.content }}
+                </div>
+                <div class="best-more"><a href="javascript:void(0)" onclick="showBestContent('{{ bestPost.id }}');">...더보기</a></div>
+                <div id="{{ bestPost.id }}-best-content"class="bets-content-hidden" style="display:none">
+                    <div class="best-title">
+                        {{ bestPost.title }}
+                    </div>
+                    <div class="best-author">
+                        {{ bestPost.user.name }} | {{ bestPost.created_at | date("Y-m-d") }}
+                    </div>
+                    <div class="best-list">
+                        <ul class="list-group">
+                            <li class="list-group-item"><span>보유질환</span>&nbsp;&nbsp; {{ bestPost.category.name }}</li>
+                            <li class="list-group-item"><span>복용기간</span>&nbsp;&nbsp; {{ bestPost.take_period }}</li>
+                            <li class="list-group-item"><span>일일복용량</span>&nbsp;&nbsp; {{ bestPost.daily_dose }}</li>
+                        </ul>
+                    </div>
+                    <div class="best-content">
+                        {{ bestPost.content | nl2br }}
+                    </div>
+                    <div class="photos">
+                        <div class="row">
+                            {% for photos in afterStory.getPhotos(bestPost.id) %}
+                            <div class="col-md-3">
+                                <img src="{{ (photos.path ~ photos.filename) | media}}" class="img-responsive">
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="best-more"><a href="javascript:void(0)" onclick="getElementById('show-best-content').style.display='none';">...감추기</a></div>
+                </div>
+                <div class="best-author">
+                    {{ bestPost.user.name }} &nbsp;|&nbsp; {{ bestPost.created_at | date("Y-m-d") }}
+                </div>
+            </div>
+        {% endfor %}
+
+        <div class="clearfix"></div>
+        <div id="show-best-content"></div>
+
+        <div class="list">
+            <div class="search">
+                <div class="row">
+                    <div class="col-md-2 col-md-offset-6">
+                        <div class="form-group">
+                            <select class="form-control" name="search_category">
+                                <option>전체</option>
+                                <option>작성자</option>
+                                <option>제목</option>
+                                <option>내용</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="검색">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">검색</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="list-header">
+                <div class="input-group pull-right">
+                    <select class="form-control" name="category">
+                        <option>전체</option>
+                        {% for category in afterStory.getCategories %}
+                            <option value="{{ category.id }}">{{ category.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="list-row">
+                <table class="table">
+                    {% for post in afterStory.getPosts %}
+                    <tr>
+                        <td>{{ afterStory.getPosts.total - ((afterStory.getPage - 1) * 5) - loop.index + 1}}</td>
+                        <td>
+                            <div class="row info">
+                                <div class="col-md-6">
+                                    <span>작성자</span>&nbsp;&nbsp; {{ post.user.name }}
+                                </div>
+                                <div class="col-md-6">
+                                    <span>작성일</span>&nbsp;&nbsp; {{ post.created_at | date("Y-m-d") }}
+                                </div>
+                                <div class="col-md-6">
+                                    <span>보유질환</span>&nbsp;&nbsp; {{ post.category.name }}
+                                </div>
+                                <div class="col-md-6">
+                                    <span>복용기간</span>&nbsp;&nbsp; {{ post.take_period }}
+                                </div>
+                                <div class="col-md-6">
+                                    <span>일일복용량</span>&nbsp;&nbsp; {{ post.daily_dose }}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 title">{{ post.title }}</div>
+                                <div id="{{ post.id }}-content-short" class="col-md-12 content" style="display: block;">{{ post.content|length > 300 ? post.content|slice(0, 300) ~ '...' : post.content}}</div>
+                                <div class="col-md-12">
+                                    <a href="javascript:void(0)" onclick="showContent('{{ post.id }}');" class="more" id="{{ post.id }}-more">...더보기</a>
+                                    <div id="{{ post.id }}-content" class="content" style="display:none">
+                                        {{ post.content | nl2br }}
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                                {% if afterStory.getPhotos(post.id) | length > 0%}
+                                    <div class="photos">
+                                        <div class="row">
+                                            {% for photos in afterStory.getPhotos(post.id) %}
+                                                <div class="col-md-3">
+                                                    <img src="{{ (photos.path ~ photos.filename) | media}}" class="img-responsive">
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                {% endif %}
+                                {% if user.id == post.user_id %}
+                                <div class="col-md-12">
+                                    {{ form_open({ request: 'onDelete' }) }}
+                                        <input type="hidden" name="post_id" value="{{ post.id }}" />
+                                        <button type="submit" class="btn btn-danger pull-right">삭제</button>
+                                    {{ form_close() }}
+                                    <a href="/afterstory/{{post.id}}/update"><button class="btn btn-default pull-right">수정</button></a>
+                                </div>
+                                {% endif %}
+                                <div class="col-md-12 content-more">
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            {% if user %}
+            <div class="pull-right">
+                <a href="{{ postPage }}"><button class="btn btn-primary">후기글 작성하기</button></a>
+            </div>
+            {% endif %}
+            <div class="clearfix"></div>
+            <nav class="text-center">
+            {{ afterStory.getPosts.render | raw }}
+            </nav>
+        </div>
+    </div>
+</div>

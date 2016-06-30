@@ -1,0 +1,32 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+  category_id:
+    label: teb.afterstory::lang.posts.category_id
+    searchable: true
+
+  title:
+    label: teb.afterstory::lang.posts.title
+    searchable: true
+
+  take_period:
+    label: teb.afterstory::lang.posts.take_period
+    searchable: true
+
+  daily_dose:
+    label: teb.afterstory::lang.posts.daily_dose
+    searchable: true
+
+  is_best:
+    label: teb.afterstory::lang.posts.is_best
+    searchable: true
+
+  user_id:
+    label: teb.afterstory::lang.posts.user_id
+    searchable: true
+
+  created_at:
+    label: teb.afterstory::lang.posts.created_at
+    searchable: true

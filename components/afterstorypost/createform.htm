@@ -1,0 +1,71 @@
+{{ form_open({ request: 'onCreate', files: true }) }}
+
+    <div class="form-group">
+        <label for="postTitle" class="control-label">제목</label>
+        <input
+            id="postTitle"
+            name="title"
+            type="text"
+            class="form-control"
+            value="{{ post('title') }}" />
+    </div>
+
+    <div class="form-group">
+        <label for="postContent" class="control-label">내용</label>
+        <textarea
+            id="postContent"
+            name="content"
+            rows="8"
+            type="text"
+            class="form-control">{{ post('content') }}</textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="postCategory" class="control-label">보유질환</label>
+        <select class="form-control" name="category" id="postCategory">
+            <option value="">선택</option>
+            {% for category in afterStoryPost.getCategories %}
+            <option value="{{ category.id }}">{{ category.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="postTakePeriod" class="control-label">복용기간</label>
+        <input
+                id="postTakePeriod"
+                name="take_period"
+                type="text"
+                class="form-control"
+                value="{{ post('take_period') }}" />
+    </div>
+
+    <div class="form-group">
+        <label for="postTakePeriod" class="control-label">일일복용량</label>
+        <input
+                id="postDailyDose"
+                name="daily_dose"
+                type="text"
+                class="form-control"
+                value="{{ post('daily_dose') }}" />
+    </div>
+
+    <div class="form-group">
+        <label class="control-label">이미지 업로드</label>
+        {% for i in 0..3 %}
+        <div class="form-group">
+            <input name="images[]" type="file" class="btn btn-default btn-file">
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="form-group post-buttons">
+        <button type="submit" class="btn btn-primary btn-lg">저장</button>
+        {% if returnUrl %}
+            <a class="btn btn-link btn-lg" href="{{ returnUrl }}">취소</a>
+        {% endif %}
+    </div>
+
+    <input type="hidden" name="post_id" value="{{ post.id }}" />
+
+{{ form_close() }}

@@ -1,0 +1,35 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: teb.afterstory::lang.menu.name
+
+# Model Form Field configuration
+form: @/plugins/teb/afterstory/models/category/fields.yaml
+
+# Model Class name
+modelClass: Teb\AfterStory\Models\Category
+
+# Default redirect location
+defaultRedirect: teb/afterstory/categories
+
+# Create page
+create:
+    title: teb.afterstory::lang.form.create
+    redirect: teb/afterstory/categories/update/:id
+    redirectClose: teb/afterstory/categories
+    flash-save: teb.afterstory::lang.form.flashcreate
+
+# Update page
+update:
+    title: teb.afterstory::lang.form.update
+    redirect: teb/afterstory/categories
+    redirectClose: teb/afterstory/categories
+    flash-save: teb.afterstory::lang.form.flashupdate
+    flash-delete: teb.afterstory::lang.form.flashdelete
+
+# Preview page
+preview:
+    title: teb.afterstory::lang.form.preview
+

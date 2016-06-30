@@ -1,0 +1,25 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    title:
+        label: teb.afterstory::lang.post.title
+
+    content:
+        label: teb.afterstory::lang.post.content
+        type: textarea
+
+    category:
+        label: teb.afterstory::lang.post.category
+        type: relation
+
+    take_period:
+        label: teb.afterstory::lang.post.take_period
+
+    daily_dose:
+        label: teb.afterstory::lang.post.daily_dose
+
+    is_best:
+        label: teb.afterstory::lang.post.is_best
+        type: checkbox

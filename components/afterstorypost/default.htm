@@ -1,0 +1,21 @@
+<div class="teb-afterstory">
+
+    {% flash %}
+    <div class="alert alert-{{ type == 'error' ? 'danger' : type }}">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    </div>
+    {% endflash %}
+
+    <p>&larr; <a href="{{ '/afterstory' }}">목록으로 돌아가기</a></p>
+
+    {% if postId %}
+
+    {% partial "@updateform" %}
+
+    {% else %}
+
+    {% partial "@createform" %}
+
+    {% endif %}
+</div>

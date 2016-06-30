@@ -1,0 +1,12 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+  name:
+    label: teb.afterstory::lang.categories.name
+    searchable: true
+
+  order_no:
+    label: teb.afterstory::lang.categories.order_no
+    searchable: false
