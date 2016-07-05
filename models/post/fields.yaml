@@ -23,3 +23,6 @@ fields:
     is_best:
         label: teb.afterstory::lang.post.is_best
         type: checkbox
+
+    order_no:
+        label: teb.afterstory::lang.post.order_no

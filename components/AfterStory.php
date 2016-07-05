@@ -78,7 +78,7 @@ class AfterStory extends ComponentBase
 
   public function getBestPosts()
   {
-    return Post::where('is_best', 1)->orderBy('created_at', 'desc')->take(3)->get();
+    return Post::where('is_best', 1)->where('order_no', '<>', '0')->orderBy('order_no', 'asc')->take(3)->get();
   }
 
   public function getPosts()

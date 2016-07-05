@@ -20,7 +20,10 @@ return [
         'take_period' => '복용기간',
         'daily_dose' => '일일복용량',
         'is_best' => '베스트 여부',
-        'user_id' => '사용자 id'
+        'user_id' => '사용자 id',
+        'id' => '글 id',
+        'created_at' => '작성일자',
+        'order_no' => '베스트 순서',
     ],
     'categories' => [
         'return_to_posts' => 'Back to posts list',
@@ -34,7 +37,8 @@ return [
         'category' => '보유질환',
         'take_period' => '복용기간',
         'daily_dose' => '일일복용량',
-        'is_best' => '베스트'
+        'is_best' => '베스트',
+        'order_no' => '베스트 순서 (1부터 오름차순으로 정렬)'
     ],
     'category' => [
         'label' => '보유질환',

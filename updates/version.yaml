@@ -4,3 +4,6 @@
     - create_posts_table.php
     - create_photos_table.php
     - create_comments_table.php
+1.0.1:
+    - 베스트 순서 정할 수 있게 게시글 순서 입력 필드 추가
+    - add_order_no_to_posts_table.php

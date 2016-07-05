@@ -3,6 +3,11 @@
 # ===================================
 
 columns:
+
+  id:
+    label: teb.afterstory::lang.posts.id
+    searchable: false
+
   category_id:
     label: teb.afterstory::lang.posts.category_id
     searchable: true
@@ -22,6 +27,10 @@ columns:
   is_best:
     label: teb.afterstory::lang.posts.is_best
     searchable: true
+
+  order_no:
+    label: teb.afterstory::lang.posts.order_no
+    searchable: false
 
   user_id:
     label: teb.afterstory::lang.posts.user_id
