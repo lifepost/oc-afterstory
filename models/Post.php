@@ -8,7 +8,6 @@ use Model;
  */
 class Post extends Model
 {
-
   public $table = 'teb_afterstory_posts';
 
   public $belongsTo = [
@@ -34,4 +33,11 @@ class Post extends Model
 
   public $hasMany = [ 'photos' => ['Teb\AfterStory\Models\Photo'] ];
 
+  function scopeOwnDisease($query, $string = null)
+  {
+    if ($string) {
+      $query->where('category_id', $string);
+    }
+    return $query;
+  }
 }

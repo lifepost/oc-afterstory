@@ -24,6 +24,9 @@ class AfterStory extends ComponentBase
 {
 
   public $postPage;
+  public $searchCategory;
+  public $searchString;
+  public $ownDisease;
 
   public function componentDetails()
   {
@@ -48,7 +51,7 @@ class AfterStory extends ComponentBase
 
   public function onRun()
   {
-    if (!Auth::getUser()) return redirect('/account');
+    //if (!Auth::getUser()) return redirect('/account');
     $this->addCss('/plugins/teb/afterstory/assets/css/afterstory.css');
     $this->addJs('/plugins/teb/afterstory/assets/js/afterstory.js');
     $this->prepareVars();
@@ -58,6 +61,9 @@ class AfterStory extends ComponentBase
   protected function prepareVars()
   {
     $this->postPage = $this->page['postPage'] = $this->property('postPage');
+    if(get('search_category')) $this->searchCategory = $this->page['search_category'] = get('search_category');
+    if(get('search_string')) $this->searchString = $this->page['search_string'] = get('search_string');
+    if(get('own_disease')) $this->ownDisease = $this->page['own_disease'] = get('own_disease');
   }
 
   protected function handleOptOutLinks()
@@ -77,7 +83,39 @@ class AfterStory extends ComponentBase
 
   public function getPosts()
   {
-    return Post::orderBy('created_at', 'desc')->paginate(5);
+
+    if ($this->searchString) {
+      if ($this->searchCategory) {
+        if ($this->searchCategory == 'user') {
+          $posts = Post::whereHas('user', function ($q) {
+            $q->where('name', 'like', '%' . $this->searchString . '%');
+          })->ownDisease($this->ownDisease)->orderBy('created_at', 'desc')->paginate(5);
+        } else {
+          $posts = Post::where($this->searchCategory, 'LIKE', '%' . $this->searchString . '%')
+            ->ownDisease($this->ownDisease)->orderBy('created_at', 'desc')->paginate(5);
+        }
+      } else {
+        if($this->ownDisease) {
+          $posts = Post::whereHas('user', function ($q) {
+            $q->where('name', 'like', '%' . $this->searchString . '%')
+              ->orWhere('title', 'like', '%'.$this->searchString.'%')
+              ->orWhere('content', 'like', '%'.$this->searchString.'%');
+          })->where(function ($query) {
+            $query->ownDisease($this->ownDisease);
+          })->orderBy('created_at', 'desc')->paginate(5);
+        } else {
+          $posts = Post::whereHas('user', function ($q) {
+            $q->where('name', 'like', '%' . $this->searchString . '%');
+          })->orWhere('title', 'like', '%'.$this->searchString.'%')
+            ->orWhere('content', 'like', '%'.$this->searchString.'%')
+            ->orderBy('created_at', 'desc')->paginate(5);
+        }
+
+      }
+    } else {
+      $posts =Post::orderBy('created_at', 'desc')->ownDisease($this->ownDisease)->paginate(5);
+    }
+    return $posts;
   }
 
   public function getPhotos($post_id)
@@ -123,10 +161,5 @@ class AfterStory extends ComponentBase
     }
 
     return redirect('/afterstory');
-  }
-
-  public function onTest()
-  {
-    return 'hello';
   }
 }

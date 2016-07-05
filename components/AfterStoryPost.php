@@ -89,7 +89,6 @@ class AfterStoryPost extends ComponentBase
     ];
 
     $validation = Validator::make($data, $rules);
-    Log::info($validation->messages()->first());
     if ($validation->fails()) {
       Flash::error($validation->messages()->first());
       return;
@@ -112,7 +111,6 @@ class AfterStoryPost extends ComponentBase
 //      Input::file('images')->move('storage/app/media/photos');
 //      $fileName = Input::file('images')->getFileName();
       foreach(Input::file('images') as $image) {
-        Log::info('photo');
         if($image) {
           $photo = new Photo();
           $photo->post_id = $post->id;
@@ -144,7 +142,6 @@ class AfterStoryPost extends ComponentBase
     ];
 
     $validation = Validator::make($data, $rules);
-    Log::info($validation->messages()->first());
     if ($validation->fails()) {
       Flash::error($validation->messages()->first());
       return;
@@ -168,7 +165,6 @@ class AfterStoryPost extends ComponentBase
 
       $i = 0;
       foreach(Input::file('images') as $image) {
-        Log::info($i);
         if ($image) {
           if (isset($photos[$i]->id)) {
             $photo = Photo::find($photos[$i]->id);
@@ -210,5 +206,4 @@ class AfterStoryPost extends ComponentBase
   {
     return Photo::where('post_id', $post_id)->get();
   }
-
 }

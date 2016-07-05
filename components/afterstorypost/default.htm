@@ -9,7 +9,7 @@
 
     <p>&larr; <a href="{{ '/afterstory' }}">목록으로 돌아가기</a></p>
 
-    {% if postId %}
+    {% if postId and user.id == post.user_id %}
 
     {% partial "@updateform" %}
 
