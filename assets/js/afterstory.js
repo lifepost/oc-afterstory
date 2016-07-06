@@ -41,23 +41,24 @@ $(function () {
         $("#theModal img").height(NewImgHeight);
         $("#theModal").modal("show");
     };
-    var MyHtml = '<div id="theModal" class="modal fade">' +
-        ' <div class="modal-dialog ">' +
-        '<div class="modal-content">' +
-        ' <div class="modal-header">' +
-        '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>' +
-        '<h4 class="modal-title">이미지</h4>' +
-        '</div>' +
-        '<div class="modal-body">' +
-        '  <img not-to-enlarge="true" class="img-responsive" + src=""alt="...">' +
-        '</div>' +
-        '<div class="modal-footer">' +
-        '<button type="button" class="btn btn-default" data-dismiss="modal">' +
-        'Close' +
-        '</button>' +
-        '</div>' +
-        '</div>' +
-        '</div>' +
+    var MyHtml =
+        '<div id="theModal" class="modal fade">' +
+            '<div class="modal-dialog ">' +
+                '<div class="modal-content">' +
+                    '<div class="modal-header">' +
+                        '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>' +
+                        '<h4 class="modal-title">이미지</h4>' +
+                    '</div>' +
+                    '<div class="modal-body">' +
+                        '<img not-to-enlarge="true" class="img-responsive" + src=""alt="...">' +
+                    '</div>' +
+                    '<div class="modal-footer">' +
+                        '<button type="button" class="btn btn-default" data-dismiss="modal">' +
+                            'Close' +
+                        '</button>' +
+                    '</div>' +
+                '</div>' +
+            '</div>' +
         '</div>';
     $("div.afterstory-wrapper").append(MyHtml);
     $("img[not-to-enlarge!=true]").click(showModal);
