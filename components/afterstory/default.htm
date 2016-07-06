@@ -19,6 +19,7 @@
 
                 <div class="best-list">
                     <ul class="list-group">
+                        <li class="list-group-item"><span>나이</span>&nbsp;&nbsp; {{ bestPost.age }} 세</li>
                         <li class="list-group-item"><span>보유질환</span>&nbsp;&nbsp; {{ bestPost.category.name | length > 12 ? bestPost.category.name | slice(0,12) ~ '...' : bestPost.category.name }}</li>
                         <li class="list-group-item"><span>복용기간</span>&nbsp;&nbsp; {{ bestPost.take_period | length > 12 ? bestPost.take_period | slice(0,12) ~ '...' : bestPost.take_period }}</li>
                         <li class="list-group-item"><span>일일복용량</span>&nbsp;&nbsp; {{ bestPost.daily_dose | length > 10 ? bestPost.daily_dose | slice(0,10) ~ '...' : bestPost.daily_dose }}</li>
@@ -41,6 +42,7 @@
                     </div>
                     <div class="best-list">
                         <ul class="list-group">
+                            <li class="list-group-item"><span>나이</span>&nbsp;&nbsp; {{ bestPost.age }} 세</li>
                             <li class="list-group-item"><span>보유질환</span>&nbsp;&nbsp; {{ bestPost.category.name }}</li>
                             <li class="list-group-item"><span>복용기간</span>&nbsp;&nbsp; {{ bestPost.take_period }}</li>
                             <li class="list-group-item"><span>일일복용량</span>&nbsp;&nbsp; {{ bestPost.daily_dose }}</li>
@@ -123,6 +125,9 @@
                                 </div>
                                 <div class="col-md-6">
                                     <span>작성일</span>&nbsp;&nbsp; {{ post.created_at | date("Y-m-d") }}
+                                </div>
+                                <div class="col-md-6">
+                                    <span>나이</span>&nbsp;&nbsp; {{ post.age }} 세
                                 </div>
                                 <div class="col-md-6">
                                     <span>보유질환</span>&nbsp;&nbsp; {{ post.category.name }}

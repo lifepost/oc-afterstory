@@ -162,4 +162,5 @@ class AfterStory extends ComponentBase
 
     return redirect('/afterstory');
   }
+
 }

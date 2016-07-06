@@ -83,6 +83,7 @@ class AfterStoryPost extends ComponentBase
     $rules = [
       'title'         => 'required',
       'content'      => 'required',
+      'age' => 'required|integer|digits_between:1,3',
       'category' => 'required',
       'take_period' => 'required',
       'daily_dose' => 'required'
@@ -102,6 +103,7 @@ class AfterStoryPost extends ComponentBase
       $post->user_id = $user->id;
       $post->title = post('title');
       $post->content = post('content');
+      $post->age = post('age');
       $post->category_id = post('category');
       $post->take_period = post('take_period');
       $post->daily_dose = post('daily_dose');
@@ -136,6 +138,7 @@ class AfterStoryPost extends ComponentBase
     $rules = [
       'title'         => 'required',
       'content'      => 'required',
+      'age' => 'required|integer|digits_between:1,3',
       'category' => 'required',
       'take_period' => 'required',
       'daily_dose' => 'required'
@@ -155,6 +158,7 @@ class AfterStoryPost extends ComponentBase
 
       $post->title = post('title');
       $post->content = post('content');
+      $post->age = post('age');
       $post->category_id = post('category');
       $post->take_period = post('take_period');
       $post->daily_dose = post('daily_dose');

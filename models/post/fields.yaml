@@ -10,6 +10,9 @@ fields:
         label: teb.afterstory::lang.post.content
         type: textarea
 
+    age:
+        label: teb.afterstory::lang.post.age
+
     category:
         label: teb.afterstory::lang.post.category
         type: relation

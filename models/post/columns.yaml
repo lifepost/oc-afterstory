@@ -16,14 +16,6 @@ columns:
     label: teb.afterstory::lang.posts.title
     searchable: true
 
-  take_period:
-    label: teb.afterstory::lang.posts.take_period
-    searchable: true
-
-  daily_dose:
-    label: teb.afterstory::lang.posts.daily_dose
-    searchable: true
-
   is_best:
     label: teb.afterstory::lang.posts.is_best
     searchable: true

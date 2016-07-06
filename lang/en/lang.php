@@ -24,6 +24,7 @@ return [
         'id' => '글 id',
         'created_at' => '작성일자',
         'order_no' => '베스트 순서',
+        'age' => '나이'
     ],
     'categories' => [
         'return_to_posts' => 'Back to posts list',
@@ -38,7 +39,8 @@ return [
         'take_period' => '복용기간',
         'daily_dose' => '일일복용량',
         'is_best' => '베스트',
-        'order_no' => '베스트 순서 (1부터 오름차순으로 정렬)'
+        'order_no' => '베스트 순서 (1부터 오름차순으로 정렬)',
+        'age' => '나이 (숫자)'
     ],
     'category' => [
         'label' => '보유질환',
