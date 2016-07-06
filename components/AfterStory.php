@@ -163,4 +163,13 @@ class AfterStory extends ComponentBase
     return redirect('/afterstory');
   }
 
+  public function masking($string=null)
+  {
+    $str_len = mb_strlen($string, 'UTF-8');
+    if ($string && $str_len >= 2) {
+      $result = mb_substr($string, 0, 1) . '*' . mb_substr($string, 2, $str_len);
+      return $result;
+    }
+    return $string;
+  }
 }
