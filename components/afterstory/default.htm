@@ -145,8 +145,13 @@
                                 <div class="col-md-12">
                                     {% if user %}
                                         <a href="javascript:void(0)" onclick="showContent('{{ post.id }}');" class="more" id="{{ post.id }}-more">...더보기</a>
-                                        <div id="{{ post.id }}-content" class="content" style="display:none">
+                                        <div id="{{ post.id }}-content" class="content" style="display:none;">
                                             {{ post.content | nl2br }}
+                                            <div class="comment">
+                                                <div id="{{ post.id }}-comment">
+                                                    {% partial '@commentlist' post_id=post.id user_id=user.id %}
+                                                </div>
+                                            </div>
                                         </div>
                                     {% else %}
                                         <div style="color: #007000;">로그인 시 전체 내용을 볼 수 있습니다.</div>

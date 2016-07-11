@@ -19,6 +19,7 @@ use Exception;
 use Teb\AfterStory\Models\Category;
 use Teb\AfterStory\Models\Post;
 use Teb\AfterStory\Models\Photo;
+use Teb\AfterStory\Models\Comment;
 
 class AfterStory extends ComponentBase
 {
@@ -160,6 +161,13 @@ class AfterStory extends ComponentBase
       throw new Exception('Post delete error ...');
     }
 
+    $comments = Comment::where('post_id', $post_id);
+    if ($comments->count() > 0) {
+      if (! $comments->delete()) {
+        throw new Exception('Comments delete error ...');
+      }
+    }
+
     return redirect('/afterstory');
   }
 
@@ -172,4 +180,61 @@ class AfterStory extends ComponentBase
     }
     return $string;
   }
+
+  public function onSaveComment()
+  {
+    try {
+      if (!$user = Auth::getUser())
+        throw new ApplicationException('You should be logged in.');
+
+      if (post('content')) {
+        $comment = new Comment();
+        $comment->post_id = post('post_id');
+        $comment->content = post('content');
+        $comment->user_id = $user->id;
+        $comment->save();
+      }
+
+      $this->page['post_id'] = post('post_id');
+      $this->page['user'] = $user;
+    } catch (Exception $ex) {
+      Flash::error($ex->getMessage());
+    }
+
+  }
+
+  public function onUpdateComment()
+  {
+    try {
+      if (!$user = Auth::getUser())
+        throw new ApplicationException('You should be logged in.');
+
+      $comment = Comment::find(post('comment_id'));
+      $mode = post('mode');
+
+      if (post('mode') == 'update' && post('content')) {
+        $comment->content = post('content');
+        $comment->save();
+      } elseif (post('mode') == 'delete') {
+        $comment->delete();
+      }
+
+      $this->page['mode'] = $mode;
+      $this->page['user'] = $user;
+      $this->page['post_id'] = $comment->post_id;
+      $this->page['comment_id'] = post('comment_id');
+      $this->page['comment'] = $comment;
+
+    } catch (Exception $ex) {
+      Flash::error($ex->getMessage());
+    }
+
+  }
+
+  public function getComments($post_id)
+  {
+    return Comment::where('post_id', $post_id)->orderBy('created_at', 'asc')->get();
+  }
+
+
 }

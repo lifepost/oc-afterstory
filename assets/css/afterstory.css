@@ -108,9 +108,20 @@
   font-size: 14px;
   line-height: 25px;
 }
+.update,
+.delete,
+.cancel,
+.edit {
+  color: #d7d7d7;
+}
 @media (min-width: 970px) {
   .best-image {
     height: 245px;
     margin: auto 0;
+  }
+}
+@media (max-width: 767px) {
+  .afterstory-wrapper .list .list-row table td:last-child {
+    padding: 5px;
   }
 }

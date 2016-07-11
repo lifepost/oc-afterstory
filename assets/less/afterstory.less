@@ -1,5 +1,6 @@
 @brand-primary: #007000;
 @screen-md-min: 970px;
+@screen-xs: 767px;
 
 .afterstory-wrapper {
   .title {
@@ -121,6 +122,10 @@
   }
 }
 
+.update, .delete, .cancel, .edit {
+  color: #d7d7d7;
+}
+
 @media (min-width: @screen-md-min) {
   .best {
     //height: 805px;
@@ -128,5 +133,11 @@
   .best-image {
     height: 245px;
     margin: auto 0;
+  }
+}
+
+@media (max-width: @screen-xs) {
+  .afterstory-wrapper .list .list-row table td:last-child {
+    padding: 5px;
   }
 }
