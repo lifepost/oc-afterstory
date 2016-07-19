@@ -1,0 +1,12 @@
+# ===================================
+#  Relation Behavior Config
+# ===================================
+
+photos:
+    label: Photos
+    view:
+        form: $/teb/afterstory/models/photo/fields.yaml
+        list: $/teb/afterstory/models/photo/columns.yaml
+    manage:
+        list: $/teb/afterstory/models/photo/columns.yaml
+        toolbarButtons: create|delete

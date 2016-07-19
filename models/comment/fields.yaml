@@ -1,0 +1,8 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    content:
+        label: teb.afterstory::lang.comment.content
+        type: textarea

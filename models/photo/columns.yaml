@@ -3,10 +3,25 @@
 # ===================================
 
 columns:
+
+  id:
+    label: teb.afterstory::lang.photos.id
+    searchable: true
+
   post_id:
-    label: teb.afterstory::lang.categories.name
+    label: teb.afterstory::lang.photos.post_title
+    relation: post
+    select: title
     searchable: true
 
   path:
-    label: teb.afterstory::lang.categories.order_no
+    label: teb.afterstory::lang.photos.path
     searchable: false
+
+  filename:
+      label: teb.afterstory::lang.photos.filename
+      searchable: false
+
+  created_at:
+      label: teb.afterstory::lang.photos.created_at
+      searchable: false

@@ -8,8 +8,10 @@ columns:
     label: teb.afterstory::lang.posts.id
     searchable: false
 
-  category_id:
+  category:
     label: teb.afterstory::lang.posts.category_id
+    relation: category
+    select: name
     searchable: true
 
   title:
@@ -24,8 +26,10 @@ columns:
     label: teb.afterstory::lang.posts.order_no
     searchable: false
 
-  user_id:
-    label: teb.afterstory::lang.posts.user_id
+  user_name:
+    label: teb.afterstory::lang.posts.user_name
+    relation: user
+    select: name
     searchable: true
 
   created_at:

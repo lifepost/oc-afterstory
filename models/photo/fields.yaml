@@ -4,8 +4,9 @@
 
 fields:
     post:
-        label: teb.afterstory::lang.category.name
+        label: teb.afterstory::lang.photo.title
         type: relation
+        select: title
 
     path:
-        label: teb.afterstory::lang.category.order_no
+        label: teb.afterstory::lang.photo.path

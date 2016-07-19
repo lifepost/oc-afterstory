@@ -15,6 +15,10 @@ class Post extends Model
     'user' => ['RainLab\User\Models\User']
   ];
 
+  public $hasMany = [
+    'photos' => ['Teb\AfterStory\Models\Photo']
+  ];
+
   public $rules = [
     'title'         => 'required|max:2',
     'content'      => 'required',
@@ -23,21 +27,16 @@ class Post extends Model
     'daily_dose' => 'required'
   ];
 
-//  public $hasMany = [
-//    'photos' => ['Teb\AfterStory\Models\Photo']
-//  ];
-
-//  public $attachMany = [
-//    'photos' => 'System\Models\File'
-//  ];
-
-  public $hasMany = [ 'photos' => ['Teb\AfterStory\Models\Photo'] ];
-
   function scopeOwnDisease($query, $string = null)
   {
     if ($string) {
       $query->where('category_id', $string);
     }
     return $query;
+  }
+
+  public function scopeFilterByCategory($query, $filter)
+  {
+    return $query->whereIn('category_id', $filter);
   }
 }

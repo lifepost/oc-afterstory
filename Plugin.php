@@ -48,7 +48,7 @@ class Plugin extends PluginBase
 
   public function registerPermissions()
   {
-    return array('teb.afterstory.access_afterstory' => ['label' => 'Manage menu', 'tab' => 'MenuManager']);
+    return array('teb.afterstory.access_afterstory' => ['label' => 'Afterstory menu', 'tab' => 'MenuManager']);
   }
 
   public function registerComponents()

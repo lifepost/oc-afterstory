@@ -3,6 +3,11 @@
 # ===================================
 
 columns:
+
+  id:
+    label: teb.afterstory::lang.categories.id
+    searchable: false
+
   name:
     label: teb.afterstory::lang.categories.name
     searchable: true

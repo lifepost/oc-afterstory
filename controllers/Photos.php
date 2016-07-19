@@ -3,23 +3,20 @@
 use Flash;
 use BackendMenu;
 use Backend\Classes\Controller;
-use Teb\AfterStory\Models\Post;
+use Teb\AfterStory\Models\Photo;
 
 /**
- * Posts Back-end Controller
+ * Photos Back-end Controller
  */
-class Posts extends Controller
+class Photos extends Controller
 {
     public $implement = [
       'Backend.Behaviors.FormController',
-      'Backend.Behaviors.ListController',
-      'Backend.Behaviors.RelationController'
+      'Backend.Behaviors.ListController'
     ];
 
     public $formConfig = 'config_form.yaml';
     public $listConfig = 'config_list.yaml';
-    public $categoryConfig = 'config_category.yaml';
-    public $relationConfig = 'config_relation.yaml';
 
     public $requiredPermissions = ['teb.afterstory.access_afterstory'];
 
@@ -30,7 +27,7 @@ class Posts extends Controller
     {
         parent::__construct();
 
-        BackendMenu::setContext('Teb.AfterStory', 'afterstory', 'posts');
+        BackendMenu::setContext('Teb.AfterStory', 'afterstory', 'photos');
 
         // Add my assets
         $this->addJs('/plugins/teb/afterstory/assets/js/afterstory.js');
