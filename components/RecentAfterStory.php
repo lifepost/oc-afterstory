@@ -25,8 +25,8 @@ class RecentAfterStory extends ComponentBase
   public function componentDetails()
   {
     return [
-      'name'        => 'rainlab.user::lang.account.account',
-      'description' => 'rainlab.user::lang.account.account_desc'
+      'name'        => 'teb.afterstory::lang.plugin.name',
+      'description' => 'teb.afterstory::lang.plugin.description'
     ];
   }
 

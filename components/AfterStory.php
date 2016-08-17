@@ -32,8 +32,8 @@ class AfterStory extends ComponentBase
   public function componentDetails()
   {
     return [
-      'name'        => 'rainlab.user::lang.account.account',
-      'description' => 'rainlab.user::lang.account.account_desc'
+      'name'        => 'teb.afterstory::lang.plugin.name',
+      'description' => 'teb.afterstory::lang.plugin.description'
     ];
   }
 
@@ -149,6 +149,9 @@ class AfterStory extends ComponentBase
   {
     $post_id = post('post_id');
     $post = Post::find($post_id);
+
+    if ($post->user_id != Auth::getUser()->id)
+      throw new ApplicationException('권한이 없습니다.');
 
     foreach ($post->photos as $photo) {
       $photo->delete();

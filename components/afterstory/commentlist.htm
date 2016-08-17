@@ -10,9 +10,6 @@
         <div class="content">
             {{ comment.content|nl2br }}
         </div>
-        <!--{% if comment.created_at != comment.updated_at %}-->
-            <!--<p><small class="text text-muted">마지막 업데이트 {{ comment.updated_at.diffForHumans }}</small></p>-->
-        <!--{% endif %}-->
         {% if user.id == comment.user_id %}
             <div class="actions">
                 <a href="javascript:;"
