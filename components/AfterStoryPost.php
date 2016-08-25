@@ -58,6 +58,10 @@ class AfterStoryPost extends ComponentBase
     $this->handleOptOutLinks();
     if($this->postId) {
       $this->post = $this->page['post'] = Post::find($this->postId);
+
+      if (@Auth::getUser()->id != $this->post->user_id) {
+        return redirect('/afterstory/create');
+      }
     }
   }
 

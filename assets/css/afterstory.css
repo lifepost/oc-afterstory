@@ -66,6 +66,12 @@
 .afterstory-wrapper .list .search {
   margin-bottom: 15px;
 }
+.afterstory-wrapper .list .search select[name='search_category'] {
+  height: 36px;
+}
+.afterstory-wrapper .list .search input[name='search_string'] {
+  height: 36px;
+}
 .afterstory-wrapper .list .list-header {
   background-color: #007000;
   padding: 13px;
